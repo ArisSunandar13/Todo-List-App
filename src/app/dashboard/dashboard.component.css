@@ -1,0 +1,54 @@
+div.dashboard {
+  padding: 3% 15%;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 0;
+}
+
+button.add {
+  background-color: #16abf8;
+  height: 40px;
+  box-shadow: none;
+}
+
+/* MAIN */
+main {
+  margin-top: 5%;
+}
+
+section.activity-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+mat-card {
+  width: calc(25% - 15px);
+  height: 200px;
+}
+
+mat-card-header {
+  height: 100%;
+  cursor: pointer;
+}
+
+mat-card-content {
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+img.delete {
+  cursor: pointer;
+}

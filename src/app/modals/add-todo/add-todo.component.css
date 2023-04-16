@@ -1,0 +1,77 @@
+div.addTodo {
+  box-sizing: border-box;
+  width: 50vw;
+  min-width: 250px;
+}
+
+header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #dddddd;
+  border-style: none none solid none;
+}
+
+header h4 {
+  margin: 0;
+  font-size: 24px;
+}
+
+header mat-icon {
+  cursor: pointer;
+}
+
+main {
+  padding: 20px;
+}
+
+form {
+  margin: 25px 0px;
+}
+
+form p {
+  margin-bottom: 10px;
+}
+
+input {
+  box-sizing: border-box;
+  height: 50px;
+  width: 100%;
+  padding: 0px 10px;
+  font-size: 18px;
+  border: 1px solid #dddddd;
+}
+
+select {
+  box-sizing: border-box;
+  height: 50px;
+  width: 150px;
+  border: 1px solid #dddddd;
+  background-color: white;
+  font-size: 18px !important;
+  padding: 10px !important;
+}
+
+footer {
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid #dddddd;
+  border-style: solid none none none;
+}
+
+button.save {
+  width: 150px;
+  height: 50px;
+  background-color: #16abf8;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+}
+
+button.save:disabled {
+  cursor: unset;
+}

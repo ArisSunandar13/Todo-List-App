@@ -1,0 +1,111 @@
+div.activity {
+  padding: 3% 15%;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  font-weight: bold;
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+mat-icon {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+h1 span {
+  margin: 0px 15px;
+}
+
+mat-form-field {
+  margin: 0px 15px;
+}
+
+div.button-right {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+img.button-sort {
+  height: 40px;
+  cursor: pointer;
+}
+
+div.menu {
+  display: flex;
+  align-items: center;
+}
+
+div.menu span {
+  margin-left: 10px;
+}
+
+button.add {
+  background-color: #16abf8;
+  height: 40px;
+  box-shadow: none;
+}
+
+/* MAIN */
+main {
+  margin-top: 5%;
+}
+
+section.empty-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.todo-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+mat-card {
+  width: 100%;
+}
+
+mat-card-content {
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.left {
+  display: flex;
+  align-items: center;
+}
+
+div.left img {
+  margin-left: 10px;
+}
+
+div.left span {
+  margin-left: 10px;
+  font-size: 18px;
+}
+
+span p {
+  margin: 0;
+}
+
+img.edit {
+  cursor: pointer;
+}
+
+img.delete {
+  cursor: pointer;
+}

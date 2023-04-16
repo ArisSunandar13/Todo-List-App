@@ -1,0 +1,30 @@
+<div class="addTodo">
+    <header>
+        <h4 data-cy="modal-add-title">Tamabah List Item</h4>
+
+        <mat-icon data-cy="modal-add-close-button" (click)="close()">close</mat-icon>
+    </header>
+
+    <main>
+        <form>
+            <p data-cy="modal-add-name-title">NAMA LIST ITEM</p>
+            <input [(ngModel)]="dataTodoPost.title" (input)="cekListItem()" name="nama" type="text"
+                placeholder="Tambahkan nama list item" data-cy="modal-add-name-input">
+        </form>
+
+        <form>
+            <p data-cy="modal-add-priority-title">PRIORITY</p>
+            <select [(ngModel)]="dataTodoPost.priority" name="priority" data-cy="modal-add-priority-dropdown">
+                <option data-cy="modal-add-priority-item" value="very-high">Very High</option>
+                <option data-cy="modal-add-priority-item" value="high">High</option>
+                <option data-cy="modal-add-priority-item" value="normal">Medium</option>
+                <option data-cy="modal-add-priority-item" value="low">Low</option>
+                <option data-cy="modal-add-priority-item" value="very-low">Very Low</option>
+            </select>
+        </form>
+    </main>
+
+    <footer>
+        <button [disabled]="!isListItem" class="save" data-cy="modal-add-save-button" (click)="simpan()">Simpan</button>
+    </footer>
+</div>

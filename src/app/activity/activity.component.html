@@ -1,0 +1,87 @@
+<div class="activity">
+    <header>
+        <h1 data-cy="todo-title">
+            <mat-icon data-cy="todo-back-button" routerLink="/dashboard">arrow_back_ios</mat-icon>
+            <span *ngIf="!isEditTitle" data-cy="todo-title">{{dataActivity.title}}</span>
+            <mat-form-field *ngIf="isEditTitle">
+                <input matInput [(ngModel)]="dataActivity.title">
+            </mat-form-field>
+            <img class="edit" src="../../assets/todo-title-edit-button.svg" alt="edit" data-cy="todo-title-edit-button"
+                (click)="editTitleActivity()">
+        </h1>
+
+        <div class="button-right">
+            <img class="button-sort" src="../../assets/todo-sort-button.svg" alt="sort" [matMenuTriggerFor]="menu"
+                data-cy="todo-sort-button">
+            <mat-menu #menu>
+                <button mat-menu-item [disabled]="isSort.terbaru" data-cy="sort-selection"
+                    (click)="selectSort('terbaru')">
+                    <div class="menu">
+                        <img src="../../assets/terbaru.svg" alt="terbaru">
+                        <span>Terbaru</span>
+                    </div>
+                </button>
+                <button mat-menu-item [disabled]="isSort.terlama" data-cy="sort-selection"
+                    (click)="selectSort('terlama')">
+                    <div class="menu">
+                        <img src="../../assets/terlama.svg" alt="terlama">
+                        <span>Terlama</span>
+                    </div>
+                </button>
+                <button mat-menu-item [disabled]="isSort.az" data-cy="sort-selection" (click)="selectSort('az')">
+                    <div class="menu">
+                        <img src="../../assets/a-z.svg" alt="a-z">
+                        <span>A-Z</span>
+                    </div>
+                </button>
+                <button mat-menu-item [disabled]="isSort.za" data-cy="sort-selection" (click)="selectSort('za')">
+                    <div class="menu">
+                        <img src="../../assets/z-a.svg" alt="z-a">
+                        <span>Z-A</span>
+                    </div>
+                </button>
+                <button mat-menu-item [disabled]="isSort.belumSelesai" data-cy="sort-selection"
+                    (click)="selectSort('belumSelesai')">
+                    <div class="menu">
+                        <img src="../../assets/belum-selesai.svg" alt="belum-selesai">
+                        <span>Belum Selesai</span>
+                    </div>
+                </button>
+            </mat-menu>
+
+            <button class="add" mat-fab extended data-cy="todo-add-button" (click)="addTodo()">
+                <mat-icon>add</mat-icon>
+                Tambah
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="empty-item" *ngIf="isEmpty">
+            <img src="../../assets/todo-empty-state.svg" alt="todo-empty-state" (click)="addTodo()">
+        </section>
+
+        <section class="todo-card" data-cy="todo-item" *ngIf="!isEmpty">
+            <mat-card *ngFor="let todo of dataTodo, index as i" data-cy="todo-item">
+                <mat-card-content>
+                    <div class="left">
+                        <mat-checkbox color="primary" (change)="isActive(i)" data-cy="todo-item-checkbox"
+                            [checked]="todo.is_active==0"></mat-checkbox>
+                        <img src="../../assets/{{colorTodo[i]}}.svg" alt="{{colorTodo[i]}}"
+                            data-cy="todo-item-priority-indicator">
+                        <span data-cy="todo-item-title">
+                            <s *ngIf="todo.is_active==0">{{todo.title}}</s>
+                            <p *ngIf="todo.is_active==1">{{todo.title}}</p>
+                        </span>
+                        <img class="edit" src="../../assets/todo-title-edit-button.svg" alt="edit"
+                            data-cy="todo-item-edit-button" (click)="editTodo(todo)">
+                    </div>
+                    <div class="right">
+                        <img class="delete" src="../../assets/activity-item-delete-button.svg" alt="delete"
+                            data-cy="todo-item-delete-button" (click)="deleteTodo(todo)">
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </section>
+    </main>
+</div>

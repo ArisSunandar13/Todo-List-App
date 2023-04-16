@@ -1,0 +1,50 @@
+div.container {
+  padding: 20px 0px;
+  font-size: 18px;
+}
+
+div.icon,
+div.message {
+  display: flex;
+  justify-content: center;
+}
+
+div.message {
+  margin: 20px 0px;
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+}
+
+div.message p {
+  width: calc(100% - 50px);
+  text-align: center;
+}
+
+div.actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  height: 50px;
+  width: 150px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+button.hapus {
+  background-color: #ed4c5c;
+  color: white;
+}
+
+div.information {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}

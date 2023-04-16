@@ -1,0 +1,31 @@
+<div class="dashboard">
+    <header>
+        <h1 data-cy="activity-title">Activity</h1>
+
+        <button class="add" mat-fab extended data-cy="activity-add-button" (click)="addActivity()">
+            <mat-icon>add</mat-icon>
+            Tambah
+        </button>
+    </header>
+
+    <main>
+        <section class="empty-item" data-cy="activity-empty-state" *ngIf="isEmpty" (click)="addActivity()">
+            <img src="../../assets/activity-empty-state.svg" alt="activity-empty-state">
+        </section>
+
+        <section class="activity-card" data-cy="activity-item" *ngIf="!isEmpty">
+            <mat-card *ngFor="let activity of activities" data-cy="activity-item">
+                <mat-card-header (click)="editActivity(activity)">
+                    <mat-card-title data-cy="activity-item-title">{{activity.title}}</mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <span data-cy="activity-item-date">{{formatDate(activity.created_at)}}</span>
+
+                    <img class="delete" src="../../assets/activity-item-delete-button.svg" alt="delete"
+                        (click)="deleteActivity(activity)">
+                </mat-card-content>
+            </mat-card>
+        </section>
+    </main>
+</div>
