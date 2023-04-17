@@ -16,6 +16,8 @@ export class ActivityComponent {
 
   dataActivity: any = {};
 
+  holdSort: string = 'terbaru';
+  todoBeforeSort: any = [];
   dataTodo: any = [];
 
   colorTodo: any = [];
@@ -45,15 +47,67 @@ export class ActivityComponent {
   }
 
   selectSort(select: string) {
-    for (let prop in this.isSort) {
-      if (prop == select) {
-        this.isSort[prop] = true;
-      } else {
-        this.isSort[prop] = false;
-      }
-    }
+    this.holdSort = select;
+    const promise = new Promise((resolve) => {
+      const setData: any = {};
 
-    this.getTodo();
+      for (let prop in this.isSort) {
+        if (prop == select) {
+          this.isSort[prop] = true;
+          setData[prop] = true;
+        } else {
+          this.isSort[prop] = false;
+          setData[prop] = false;
+        }
+      }
+
+      resolve(setData);
+    });
+
+    promise.then(() => {
+      if (this.isSort.terbaru)
+        this.dataTodo = this.todoBeforeSort.sort(
+          (a: any, b: any) => a.id - b.id
+        );
+      else if (this.isSort.terlama)
+        this.dataTodo = this.todoBeforeSort.sort(
+          (a: any, b: any) => b.id - a.id
+        );
+      else if (this.isSort.az)
+        this.dataTodo = this.todoBeforeSort.sort((a: any, b: any) =>
+          a.title.localeCompare(b.title)
+        );
+      else if (this.isSort.za)
+        this.dataTodo = this.todoBeforeSort.sort((a: any, b: any) =>
+          b.title.localeCompare(a.title)
+        );
+      else if (this.isSort.belumSelesai)
+        this.dataTodo = this.todoBeforeSort.sort(
+          (a: any, b: any) => b.is_active - a.is_active
+        );
+
+      this.dataTodo.forEach((todo: any, index: number) => {
+        switch (todo.priority) {
+          case 'very-high':
+            this.colorTodo[index] = 'red';
+            break;
+          case 'high':
+            this.colorTodo[index] = 'yellow';
+            break;
+          case 'normal':
+            this.colorTodo[index] = 'green';
+            break;
+          case 'low':
+            this.colorTodo[index] = 'blue';
+            break;
+          case 'very-low':
+            this.colorTodo[index] = 'purple';
+            break;
+        }
+      });
+
+      this.cekTodo();
+    });
   }
 
   isActive(index: number) {
@@ -81,46 +135,9 @@ export class ActivityComponent {
 
   getTodo() {
     this.shared.getDataTodo(this.dataActivity.id).subscribe((result) => {
-      this.dataTodo = result.data;
+      this.todoBeforeSort = result.data;
 
-      if (this.isSort.terbaru)
-        this.dataTodo = this.dataTodo.sort((a: any, b: any) => a.id - b.id);
-      if (this.isSort.terlama)
-        this.dataTodo = this.dataTodo.sort((a: any, b: any) => b.id - a.id);
-      if (this.isSort.az)
-        this.dataTodo = this.dataTodo.sort((a: any, b: any) =>
-          a.title.localeCompare(b.title)
-        );
-      if (this.isSort.za)
-        this.dataTodo = this.dataTodo.sort((a: any, b: any) =>
-          b.title.localeCompare(a.title)
-        );
-      if (this.isSort.belumSelesai)
-        this.dataTodo = this.dataTodo.sort(
-          (a: any, b: any) => b.is_active - a.is_active
-        );
-
-      this.dataTodo.forEach((todo: any, index: number) => {
-        switch (todo.priority) {
-          case 'very-high':
-            this.colorTodo[index] = 'red';
-            break;
-          case 'high':
-            this.colorTodo[index] = 'yellow';
-            break;
-          case 'normal':
-            this.colorTodo[index] = 'green';
-            break;
-          case 'low':
-            this.colorTodo[index] = 'blue';
-            break;
-          case 'very-low':
-            this.colorTodo[index] = 'purple';
-            break;
-        }
-      });
-
-      this.cekTodo();
+      this.selectSort(this.holdSort);
     });
   }
 

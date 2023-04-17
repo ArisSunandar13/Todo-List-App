@@ -2,17 +2,17 @@
     <header>
         <h1>
             <mat-icon data-cy="todo-back-button" routerLink="/dashboard">arrow_back_ios</mat-icon>
-            <span *ngIf="!isEditTitle">{{dataActivity.title}}</span>
+            <span data-cy="todo-title" *ngIf="!isEditTitle" (click)="editTitleActivity()">{{dataActivity.title}}</span>
             <mat-form-field *ngIf="isEditTitle">
-                <input matInput [(ngModel)]="dataActivity.title" data-cy="todo-title">
+                <input (blur)="editTitleActivity()" matInput [(ngModel)]="dataActivity.title" data-cy="todo-title">
             </mat-form-field>
             <img class="edit" src="../../assets/todo-title-edit-button.svg" alt="edit" data-cy="todo-title-edit-button"
                 (click)="editTitleActivity()">
         </h1>
 
         <div class="button-right">
-            <img class="button-sort" src="../../assets/todo-sort-button.svg" alt="sort" [matMenuTriggerFor]="menu"
-                data-cy="todo-sort-button">
+            <img data-cy="todo-sort-button" class="button-sort" src="../../assets/todo-sort-button.svg" alt="sort"
+                [matMenuTriggerFor]="menu">
             <mat-menu #menu>
                 <button mat-menu-item [disabled]="isSort.terbaru" data-cy="sort-selection"
                     (click)="selectSort('terbaru')">
@@ -49,7 +49,7 @@
                 </button>
             </mat-menu>
 
-            <button class="add" mat-fab extended data-cy="todo-add-button" (click)="addTodo()">
+            <button data-cy="todo-add-button" class="add" mat-fab extended (click)="addTodo()">
                 <mat-icon>add</mat-icon>
                 Tambah
             </button>
@@ -57,12 +57,12 @@
     </header>
 
     <main>
-        <section class="empty-item" *ngIf="isEmpty">
+        <section data-cy="todo-empty-state" class="empty-item" *ngIf="isEmpty">
             <img src="../../assets/todo-empty-state.svg" alt="todo-empty-state" (click)="addTodo()">
         </section>
 
-        <section class="todo-card" data-cy="todo-item" *ngIf="!isEmpty">
-            <mat-card *ngFor="let todo of dataTodo, index as i" data-cy="todo-item">
+        <section class="todo-card" *ngIf="!isEmpty">
+            <mat-card data-cy="todo-item" *ngFor="let todo of dataTodo, index as i">
                 <mat-card-content>
                     <div class="left">
                         <mat-checkbox data-cy="todo-item-checkbox" color="primary" (change)="isActive(i)"
@@ -73,8 +73,8 @@
                             <s *ngIf="todo.is_active==0">{{todo.title}}</s>
                             <p *ngIf="todo.is_active==1">{{todo.title}}</p>
                         </span>
-                        <img class="edit" src="../../assets/todo-title-edit-button.svg" alt="edit"
-                            data-cy="todo-item-edit-button" (click)="editTodo(todo)">
+                        <img data-cy="todo-item-edit-button" class="edit" src="../../assets/todo-title-edit-button.svg"
+                            alt="edit" (click)="editTodo(todo)">
                     </div>
                     <div class="right">
                         <img data-cy="todo-item-delete-button" class="delete"
