@@ -5,7 +5,7 @@ import { ActivityComponent } from './activity/activity.component';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'activity', component: ActivityComponent },
+  { path: 'detail', component: ActivityComponent },
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
 

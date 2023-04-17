@@ -67,11 +67,11 @@ export class ActivityComponent {
     promise.then(() => {
       if (this.isSort.terbaru)
         this.dataTodo = this.todoBeforeSort.sort(
-          (a: any, b: any) => a.id - b.id
+          (a: any, b: any) => b.id - a.id
         );
       else if (this.isSort.terlama)
         this.dataTodo = this.todoBeforeSort.sort(
-          (a: any, b: any) => b.id - a.id
+          (a: any, b: any) => a.id - b.id
         );
       else if (this.isSort.az)
         this.dataTodo = this.todoBeforeSort.sort((a: any, b: any) =>

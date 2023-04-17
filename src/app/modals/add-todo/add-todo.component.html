@@ -14,13 +14,20 @@
 
         <form>
             <p data-cy="modal-add-priority-title">PRIORITY</p>
-            <select data-cy="modal-add-priority-dropdown" [(ngModel)]="dataTodoPost.priority" name="priority">
-                <option data-cy="modal-add-priority-item" value="very-high">Very High</option>
-                <option data-cy="modal-add-priority-item" value="high">High</option>
-                <option data-cy="modal-add-priority-item" value="normal">Medium</option>
-                <option data-cy="modal-add-priority-item" value="low">Low</option>
-                <option data-cy="modal-add-priority-item" value="very-low">Very Low</option>
-            </select>
+            <button data-cy="modal-add-priority-dropdown" class="priority"
+                [matMenuTriggerFor]="menu">{{dataTodoPost.priority}}</button>
+            <mat-menu #menu>
+                <button data-cy="modal-add-priority-item" mat-menu-item (click)="dataTodoPost.priority='very-high'">Very
+                    High</button>
+                <button data-cy="modal-add-priority-item" mat-menu-item
+                    (click)="dataTodoPost.priority='high'">High</button>
+                <button data-cy="modal-add-priority-item" mat-menu-item
+                    (click)="dataTodoPost.priority='normal'">Medium</button>
+                <button data-cy="modal-add-priority-item" mat-menu-item
+                    (click)="dataTodoPost.priority='low'">Low</button>
+                <button data-cy="modal-add-priority-item" mat-menu-item (click)="dataTodoPost.priority='very-low'">Very
+                    Low</button>
+            </mat-menu>
         </form>
     </main>
 

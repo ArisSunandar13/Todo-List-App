@@ -9,12 +9,12 @@
     </header>
 
     <main>
-        <section class="empty-item" *ngIf="isEmpty" (click)="addActivity()">
-            <img data-cy="activity-empty-state" src="../../assets/activity-empty-state.svg" alt="activity-empty-state">
+        <section data-cy="activity-empty-state" class="empty-item" *ngIf="isEmpty">
+            <img src="../../assets/activity-empty-state.svg" alt="activity-empty-state">
         </section>
 
         <section class="activity-card" *ngIf="!isEmpty">
-            <mat-card *ngFor="let activity of activities">
+            <mat-card data-cy="activity-item-list" *ngFor="let activity of activities">
                 <mat-card-header data-cy="activity-item" (click)="editActivity(activity)">
                     <mat-card-title data-cy="activity-item-title">{{activity.title}}</mat-card-title>
                 </mat-card-header>

@@ -78,6 +78,6 @@ export class DashboardComponent {
   editActivity(dataActivity: any) {
     localStorage.setItem('dataActivity', JSON.stringify(dataActivity));
 
-    this.router.navigate(['activity']);
+    this.router.navigate(['detail']);
   }
 }

@@ -25,6 +25,12 @@ main {
   margin-top: 5%;
 }
 
+section.empty-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 section.activity-card {
   display: flex;
   flex-wrap: wrap;
