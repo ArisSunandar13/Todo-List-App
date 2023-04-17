@@ -1,21 +1,19 @@
-<main data-cy="modal-delete">
-    <div class="container" *ngIf="!isInformation">
-        <div class="icon">
-            <img src="../../../assets/modal-delete-icon.svg" alt="delete-icon" data-cy="modal-delete-icon">
-        </div>
-        <div class="message">
-            <p data-cy="modal-delete-title">
-                Apakah anda yakin menghapus
-                <span *ngIf="isActivity">activity <b>"New Activity"</b></span>
-                <span *ngIf="!isActivity">item <b>"{{dataDelete.title}}"</b></span>?
-            </p>
-        </div>
-        <div class="actions">
-            <button class="batal" [mat-dialog-close]="undefined" data-cy="modal-delete-cancel-button">Batal</button>
-            <button class="hapus" (click)="hapus()" data-cy="modal-delete-confirm-button">Hapus</button>
-        </div>
+<div data-cy="modal-delete" class="modal-delete" mat-dialog-container *ngIf="!isInformation">
+    <div class="icon">
+        <img src="../../../assets/modal-delete-icon.svg" alt="delete-icon" data-cy="modal-delete-icon">
     </div>
-</main>
+    <div class="message">
+        <p data-cy="modal-delete-title">
+            Apakah anda yakin menghapus
+            <span *ngIf="isActivity">activity <b>"New Activity"</b></span>
+            <span *ngIf="!isActivity">item <b>"{{dataDelete.title}}"</b></span>?
+        </p>
+    </div>
+    <div class="actions">
+        <button class="batal" [mat-dialog-close]="undefined" data-cy="modal-delete-cancel-button">Batal</button>
+        <button class="hapus" (click)="hapus()" data-cy="modal-delete-confirm-button">Hapus</button>
+    </div>
+</div>
 
 <div data-cy="modal-information" class="information" *ngIf="isInformation">
     <img data-cy="modal-information-icon" src="../../../assets/modal-information-icon.svg" alt="information">
