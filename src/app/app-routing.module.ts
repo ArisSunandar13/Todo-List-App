@@ -4,9 +4,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ActivityComponent } from './activity/activity.component';
 
 const routes: Routes = [
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'detail', component: ActivityComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  {
+    path: '',
+    pathMatch: 'prefix',
+    component: DashboardComponent,
+  },
+  { path: 'dashboard', pathMatch: 'prefix', component: DashboardComponent },
+  { path: 'detail', pathMatch: 'prefix', component: ActivityComponent },
 ];
 
 @NgModule({
