@@ -126,14 +126,16 @@ export class ActivityComponent {
 
   addTodo() {
     this.dialog
-      .open(AddTodoComponent, { data: this.dataActivity })
+      .open(AddTodoComponent, { data: { dataActivity: this.dataActivity } })
       .afterClosed()
       .subscribe(() => this.getTodo());
   }
 
   editTodo(data: any) {
     this.dialog
-      .open(AddTodoComponent, { data: data })
+      .open(AddTodoComponent, {
+        data: { dataTodo: data, dataActivity: this.dataActivity },
+      })
       .afterClosed()
       .subscribe(() => this.getTodo());
   }

@@ -2,9 +2,9 @@
     <header>
         <h1 data-cy="todo-title">
             <mat-icon data-cy="todo-back-button" routerLink="/dashboard">arrow_back_ios</mat-icon>
-            <span *ngIf="!isEditTitle" data-cy="todo-title">{{dataActivity.title}}</span>
+            <span *ngIf="!isEditTitle">{{dataActivity.title}}</span>
             <mat-form-field *ngIf="isEditTitle">
-                <input matInput [(ngModel)]="dataActivity.title">
+                <input matInput [(ngModel)]="dataActivity.title" data-cy="todo-title">
             </mat-form-field>
             <img class="edit" src="../../assets/todo-title-edit-button.svg" alt="edit" data-cy="todo-title-edit-button"
                 (click)="editTitleActivity()">

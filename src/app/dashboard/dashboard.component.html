@@ -15,15 +15,15 @@
 
         <section class="activity-card" data-cy="activity-item" *ngIf="!isEmpty">
             <mat-card *ngFor="let activity of activities" data-cy="activity-item">
-                <mat-card-header (click)="editActivity(activity)">
-                    <mat-card-title data-cy="activity-item-title">{{activity.title}}</mat-card-title>
+                <mat-card-header (click)="editActivity(activity)" data-cy="activity-item-title">
+                    <mat-card-title>{{activity.title}}</mat-card-title>
                 </mat-card-header>
 
                 <mat-card-content>
                     <span data-cy="activity-item-date">{{formatDate(activity.created_at)}}</span>
 
                     <img class="delete" src="../../assets/activity-item-delete-button.svg" alt="delete"
-                        (click)="deleteActivity(activity)">
+                        (click)="deleteActivity(activity)" data-cy="activity-item-delete-button">
                 </mat-card-content>
             </mat-card>
         </section>

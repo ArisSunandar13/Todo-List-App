@@ -10,8 +10,10 @@ import { SharedServiceService } from 'src/app/services/shared-service.service';
 export class AddTodoComponent {
   isListItem: boolean = false;
 
+  dataActivity: any = {};
+
   dataTodoPost: any = {
-    activity_group_id: this.data.id,
+    activity_group_id: 0,
     title: '',
     priority: 'very-high',
   };
@@ -21,7 +23,9 @@ export class AddTodoComponent {
     private dialogRef: MatDialogRef<AddTodoComponent>,
     private shared: SharedServiceService
   ) {
-    if (data != null) this.dataTodoPost = data;
+    if (data.dataTodo != null) this.dataTodoPost = data.dataTodo;
+
+    this.dataTodoPost.activity_group_id = data.dataActivity.id;
   }
 
   ngOnInit() {
@@ -37,11 +41,15 @@ export class AddTodoComponent {
   }
 
   simpan() {
-    const { id, title, priority } = this.dataTodoPost;
+    const { id, title, priority, activity_group_id } = this.dataTodoPost;
 
-    if (this.data == null)
+    if (this.data.dataTodo == null)
       this.shared
-        .postDataTodo(this.dataTodoPost)
+        .postDataTodo({
+          title: title,
+          priority: priority,
+          activity_group_id: activity_group_id,
+        })
         .subscribe(() => this.dialogRef.close());
     else
       this.shared
