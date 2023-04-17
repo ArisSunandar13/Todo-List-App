@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!isInformation">
+<div class="container" *ngIf="!isInformation" data-cy="modal-delete">
     <div class="icon">
         <img src="../../../assets/modal-delete-icon.svg" alt="delete-icon" data-cy="modal-delete-icon">
     </div>
@@ -11,13 +11,12 @@
     </div>
     <div class="actions">
         <button class="batal" [mat-dialog-close]="undefined" data-cy="modal-delete-cancel-button">Batal</button>
-        <button class="hapus" (click)="hapus()"
-            data-cy="modal-delete-confirm-button activity-item-delete-button">Hapus</button>
+        <button class="hapus" (click)="hapus()" data-cy="modal-delete-confirm-button">Hapus</button>
     </div>
 </div>
 
-<div class="information" *ngIf="isInformation" data-cy="modal-information">
-    <img src="../../../assets/modal-information-icon.svg" alt="information" data-cy="modal-information-icon">
+<div data-cy="modal-information" class="information" *ngIf="isInformation">
+    <img data-cy="modal-information-icon" src="../../../assets/modal-information-icon.svg" alt="information">
     <span data-cy="modal-information-title">
         <span *ngIf="isActivity">Activity</span>
         <span *ngIf="!isActivity">Item</span>

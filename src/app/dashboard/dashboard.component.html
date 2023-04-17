@@ -13,7 +13,7 @@
             <img src="../../assets/activity-empty-state.svg" alt="activity-empty-state">
         </section>
 
-        <section class="activity-card" data-cy="activity-item" *ngIf="!isEmpty">
+        <section class="activity-card"*ngIf="!isEmpty">
             <mat-card *ngFor="let activity of activities" data-cy="activity-item">
                 <mat-card-header (click)="editActivity(activity)" data-cy="activity-item-title">
                     <mat-card-title>{{activity.title}}</mat-card-title>

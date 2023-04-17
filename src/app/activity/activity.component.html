@@ -1,6 +1,6 @@
 <div class="activity">
     <header>
-        <h1 data-cy="todo-title">
+        <h1>
             <mat-icon data-cy="todo-back-button" routerLink="/dashboard">arrow_back_ios</mat-icon>
             <span *ngIf="!isEditTitle">{{dataActivity.title}}</span>
             <mat-form-field *ngIf="isEditTitle">
@@ -65,7 +65,7 @@
             <mat-card *ngFor="let todo of dataTodo, index as i" data-cy="todo-item">
                 <mat-card-content>
                     <div class="left">
-                        <mat-checkbox color="primary" (change)="isActive(i)" data-cy="todo-item-checkbox"
+                        <mat-checkbox data-cy="todo-item-checkbox" color="primary" (change)="isActive(i)"
                             [checked]="todo.is_active==0"></mat-checkbox>
                         <img src="../../assets/{{colorTodo[i]}}.svg" alt="{{colorTodo[i]}}"
                             data-cy="todo-item-priority-indicator">
@@ -77,8 +77,8 @@
                             data-cy="todo-item-edit-button" (click)="editTodo(todo)">
                     </div>
                     <div class="right">
-                        <img class="delete" src="../../assets/activity-item-delete-button.svg" alt="delete"
-                            data-cy="todo-item-delete-button" (click)="deleteTodo(todo)">
+                        <img data-cy="todo-item-delete-button" class="delete"
+                            src="../../assets/activity-item-delete-button.svg" alt="delete" (click)="deleteTodo(todo)">
                     </div>
                 </mat-card-content>
             </mat-card>
